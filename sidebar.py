@@ -49,12 +49,11 @@ textToReplace += "\n"
 print str(datetime.now()), "Collecting Emerald Population"
 url = 'http://ps2.fisu.pw/api/population/?world=17'
 page=urllib2.urlopen(url)
-time.sleep(60)
+time.sleep(10)
 data = json.load(page)
-world = data["config"]["time"]
-vs = "%s" % data["result"][str(world)]["vs"]
-nc = "%s|" % data["result"][str(world)]["nc"]
-tr = "%s|" % data["result"][str(world)]["tr"]
+vs = "%s" % data["result"][0]["vs"]
+nc = "%s|" % data["result"][0]["nc"]
+tr = "%s|" % data["result"][0]["tr"]
 textToReplace += "## **Emerald Population**\n"
 textToReplace += "TR|NC|VS\n"
 textToReplace += ":-:|:-:|:-:\n"
