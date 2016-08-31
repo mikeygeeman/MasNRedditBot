@@ -15,3 +15,8 @@ From there you can run sidebar.py and it will go out refresh the token and run t
 It then puts the list together and submits it to the reddit wiki config/sidebar.
 
 USe at your own risk.
+
+
+Latest version contains a feed scraper for IAP and then it posts it to a reddit as part of the sidear.py script
+
+playlistbot.py contains a way to email the PlaylisterBot to post the videos from one reddit to another
