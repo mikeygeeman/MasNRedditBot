@@ -97,7 +97,28 @@ sidebar_contents += filedata
 r.update_settings(r.get_subreddit(sub), description=sidebar_contents)
 print str(datetime.now()), "Updated Reddit!!"
 
+print str(datetime.now()), "Getting Information from Instant Action Podcast"
+url = 'http://www.instantactionpodcast.com/category/podcast/feed/'
+page=urllib2.urlopen(url)
+soup = BeautifulSoup(page.read(), 'html.parser')
+raw = soup.find('item')
+title = raw.find('title').get_text()
+link = raw.find('link').get_text()
+description = raw.find('description').get_text()
 
+print str(datetime.now()), "Connecting to Reddit to fetch lat 100 posts"
+subreddit = r.get_subreddit('MasN')
+for submission in subreddit.get_hot(limit =100):
+    if title in submission.title:
+        print str(datetime.now()), "The most recent copy has already been posted, exiting"
+        exit()
+    else:
+        continue
+print str(datetime.now()), "New Feed Detected"
+
+print str(datetime.now()), "Posting link to Reddit"
+subreddit.submit(title, url=link)
+print "Posted to Reddit"
 
 
 
